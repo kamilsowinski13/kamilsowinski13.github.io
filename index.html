@@ -611,8 +611,9 @@
                         <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Dane regionalne</span>
                     </div>
                     <div class="project-actions">
-                        <a class="project-link" href="projekty/praca-licencjacka/index.html" target="_blank">🚀 Otwórz stronę projektu</a>
-                        <a class="project-link secondary" href="projekty/praca-licencjacka/index.html" target="_blank">🌐 Strona online</a>
+                        <a class="project-link" href="https://kamilsowinski13.github.io/praca-licencjacka/" target="_blank" rel="noopener noreferrer">🚀 Otwórz pracę licencjacką</a>
+                        <a class="project-link secondary" href="https://kamilsowinski13.github.io/praca-licencjacka/" target="_self">🌐 Otwórz w tej karcie</a>
+                        <p style="width:100%; margin:6px 0 0; font-size:0.78rem; color:var(--text-muted);">Link: <a href="https://kamilsowinski13.github.io/praca-licencjacka/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-secondary);">https://kamilsowinski13.github.io/praca-licencjacka/</a></p>
                     </div>
                 </div>
 
@@ -627,8 +628,9 @@
                         <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Wizualizacja danych</span>
                     </div>
                     <div class="project-actions">
-                        <a class="project-link" href="projekty/analiza-wielowymiarowa/index.html" target="_blank">🚀 Otwórz stronę projektu</a>
-                        <a class="project-link secondary" href="projekty/analiza-wielowymiarowa/DANE-ANALIZA WIELOWYMIAROWA.xlsx" target="_blank">📊 Dane XLSX</a>
+                        <a class="project-link" href="https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/" target="_blank" rel="noopener noreferrer">🚀 Otwórz analizę wielowymiarową</a>
+                        <a class="project-link secondary" href="https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/" target="_self">🌐 Otwórz w tej karcie</a>
+                        <p style="width:100%; margin:6px 0 0; font-size:0.78rem; color:var(--text-muted);">Link: <a href="https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-secondary);">https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/</a></p>
                     </div>
                 </div>
 
@@ -820,7 +822,19 @@
             const messagesDiv = document.getElementById('chatMessages');
             const msgDiv = document.createElement('div');
             msgDiv.className = `msg ${sender}`;
-            msgDiv.textContent = text;
+
+            if (sender === 'bot') {
+                // Zamiana linków w odpowiedziach asystenta na klikalne odnośniki
+                const linkedText = text.replace(
+                    /(https?:\/\/[^\s]+)/g,
+                    '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#6ee7b7; text-decoration:underline;">$1</a>'
+                );
+                msgDiv.innerHTML = linkedText;
+            } else {
+                // Wiadomość użytkownika pozostaje jako zwykły tekst
+                msgDiv.textContent = text;
+            }
+
             messagesDiv.appendChild(msgDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
