@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamil Sowiński - Data Analyst Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #171717; 
+            --bg-card: #262626; 
+            --bg-card-hover: #333333;
+            --accent-primary: #10b981; 
+            --accent-secondary: #34d399; 
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #404040;
+            --nav-bg: rgba(23, 23, 23, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 80px 20px 40px 20px;
+        }
+
+        /* Górne Menu (Navbar) */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-container a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-container a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--accent-secondary), #6ee7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .skill-category {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-primary), #6ee7b7);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--bg-card);
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-main);
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent-secondary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background-color: rgba(16, 185, 129, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-primary), #6ee7b7);
+            color: #000;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #000;
+            background: linear-gradient(135deg, var(--accent-primary), #6ee7b7);
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .project-link.secondary {
+            color: var(--accent-secondary);
+            background: transparent;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .rodo {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #525252;
+            margin-top: 20px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sekcja Czatbota AI */
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-primary), #6ee7b7);
+            color: #000;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-chat-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #1f2937;
+            padding: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .chat-close {
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .chat-close:hover { color: white; }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            max-width: 85%;
+            line-height: 1.4;
+        }
+
+        .msg.bot {
+            background-color: #374151;
+            align-self: flex-start;
+            color: white;
+            border-bottom-left-radius: 2px;
+        }
+
+        .msg.user {
+            background-color: var(--accent-primary);
+            align-self: flex-end;
+            color: #000;
+            border-bottom-right-radius: 2px;
+            font-weight: 500;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            background: #1f2937;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-body);
+            color: white;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background: var(--accent-primary);
+            color: black;
+            border: none;
+            padding: 0 15px;
+            margin-left: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .loading { display: none; align-self: flex-start; font-size: 0.8rem; color: var(--text-muted); margin-left: 10px; }
+
+        @media (max-width: 900px) {
+            .dashboard-container { grid-template-columns: 1fr; }
+            .chat-window { width: 90%; right: 5%; bottom: 80px; }
+            .nav-container { flex-wrap: wrap; gap: 15px; }
+        }
+/* --- USTAWIENIA DLA WYDRUKU PDF (JEDNA STRONA) --- */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 5mm; /* Bardzo małe marginesy, żeby zmieścić więcej */
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            body {
+                background-color: #171717 !important;
+                padding: 10px !important;
+                /* Skalowanie całej strony - zmniejsz tę wartość (np. na 0.55), jeśli nadal ucina dół */
+                zoom: 0.5; 
+            }
+            
+            /* Usuwamy cienie i zapobiegamy rozrywaniu kart między stronami */
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #404040 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Ścieśniamy odstępy między elementami */
+            .dashboard-container {
+                gap: 15px !important;
+            }
+
+            /* Ukrywamy elementy niepotrzebne na papierze */
+            nav, .ai-chat-btn, .chat-window {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nawigacja Sticky (Minimalistyczna i Zaktualizowana) -->
+    <nav>
+        <div class="nav-container">
+            <a href="#omnie">👤 O mnie</a>
+            <a href="#edukacja">🎓 Edukacja & Certyfikaty</a>
+            <a href="#projekty">📈 Projekty</a>
+            <a href="#praktyka">⚙️ Praktyczne Umiejętności</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <!-- LEWA KOLUMNA (Profil i Kontakt) -->
+        <div class="sidebar-column" style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="card reveal" id="kontakt" style="text-align: center;">
+                <div class="profile-img-container">
+                    <img src="twoje_zdjecie.jpg" alt="Kamil Sowiński" class="profile-img" onerror="this.src='https://placehold.co/150x150/262626/10b981?text=KS'">
+                </div>
+                <h1>Kamil Sowiński</h1>
+                <p style="color: var(--accent-secondary); font-weight: 500; font-size: 1rem; margin-bottom: 0;">Analityk Danych | Automatyzacja raportowania | Big Data</p>
+                <p style="font-size: 0.85rem;">Student Informatyki i Ekonometrii (Big Data)</p>
+                
+                <ul class="contact-info" style="text-align: left; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <li>📍 Gdańsk, Polska</li>
+                    <li>📞 +48 515 767 403</li>
+                    <li>✉️ <a href="mailto:kamilsowinski13@gmail.com">kamilsowinski13@gmail.com</a></li>
+                    <li>💼 <a href="https://www.linkedin.com/in/kamil-sowiński-888540313/" target="_blank">Profil LinkedIn</a></li>
+                </ul>
+
+                <a href="Kamil_Sowinski_CV.pdf" download="Kamil_Sowinski_CV.pdf" class="download-btn">
+                    📄 Pobierz CV (PDF)
+                </a>
+            </div>
+
+            <div class="card reveal" id="krotko-o-mnie">
+                <h2>👋 Krótko o mnie</h2>
+                <ul class="bullet-list" style="margin-bottom: 0;">
+                    <li>23 lata, pochodzę z Sierpca</li>
+                    <li>Obecnie studiuję i rozwijam się w Gdańsku</li>
+                    <li>Od młodszych lat pomagałem w rodzinnym gospodarstwie rolnym</li>
+                    <li>Cenię dokładność, systematyczność i konkretne efekty pracy</li>
+                </ul>
+            </div>
+
+            <div class="card reveal" id="umiejetnosci">
+                <h2>🛠️ Umiejętności Techniczne</h2>
+                
+                <h3 class="skill-category">Języki programowania</h3>
+                <div class="tags-container">
+                    <span class="tag">R</span>
+                    <span class="tag">Python (Web Scraping)</span>
+                    <span class="tag">SQL (m.in. PostgreSQL)</span>
+                </div>
+
+                <h3 class="skill-category">Wizualizacja i BI</h3>
+                <div class="tags-container">
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Power BI</span>
+                </div>
+
+                <h3 class="skill-category">Analiza statystyczna</h3>
+                <div class="tags-container">
+                    <span class="tag">Statistica</span>
+                    <span class="tag">MS Excel (Zaawansowany)</span>
+                </div>
+
+                <h3 class="skill-category">Technologie i systemy</h3>
+                <div class="tags-container">
+                    <span class="tag">Pakiet MS 365</span>
+                    <span class="tag">Podstawy UML</span>
+                    <span class="tag">Wdrażanie systemów IT</span>
+                </div>
+
+                <h3 class="skill-category">Bazy danych</h3>
+                <div class="tags-container">
+                    <span class="tag">Struktury przechowywania</span>
+                    <span class="tag">MDM</span>
+                </div>
+
+                <h3 class="skill-category">Inne</h3>
+                <div class="tags-container" style="margin-bottom: 0;">
+                    <span class="tag">Prawo jazdy kat. B</span>
+                </div>
+            </div>
+
+            <div class="card reveal" id="zainteresowania">
+                <h2>🌟 Zainteresowania</h2>
+                <ul class="bullet-list" style="margin-bottom: 0;">
+                    <li>Energetyka, nowe technologie i automatyzacja pracy z danymi</li>
+                    <li>Rolnictwo i rynki surowcowe</li>
+                    <li>Sport i podróże</li>
+                    <li>Gotowanie i muzyka</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PRAWA KOLUMNA -->
+        <div class="main-column">
+            
+            <div class="card reveal" id="omnie">
+                <h2>O mnie (Profil zawodowy)</h2>
+                <p>Jestem 23-letnim studentem Informatyki i Ekonometrii ze specjalizacją <strong>Big Data</strong>. Pochodzę z Sierpca, a obecnie studiuję i rozwijam się zawodowo w Gdańsku. Interesuję się analizą danych, automatyzacją raportowania oraz praktycznym wykorzystaniem narzędzi AI w pracy analitycznej.</p>
+                
+                <p>Od młodszych lat pomagałem przy pracy w rodzinnym gospodarstwie rolnym. To doświadczenie nauczyło mnie systematyczności, odpowiedzialności, dobrej organizacji czasu oraz szacunku do konkretnej, dobrze wykonanej pracy. Dzięki temu staram się patrzeć na dane nie tylko od strony technicznej, ale również przez pryzmat realnych procesów i decyzji biznesowych.</p>
+
+                <p>Mam doświadczenie projektowe w pozyskiwaniu, czyszczeniu, walidacji i analizie danych oraz w przygotowywaniu wniosków na podstawie wyników. W swoich projektach łączę klasyczną statystykę, ekonometrię, narzędzia BI oraz programowanie w R, Pythonie i SQL.</p>
+
+                <p style="margin-bottom: 0;">Szukam możliwości rozwoju w zespole, w którym będę mógł wykorzystywać Python, SQL, Excel, Power BI i narzędzia AI do usprawniania codziennych procesów analitycznych oraz raportowych.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;" id="edukacja">
+                <div class="card reveal">
+                    <h2>🎓 Wykształcenie</h2>
+                    <h3 style="color: var(--text-main); font-size: 1rem;">Uniwersytet Gdański | Studia II stopnia</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 5px;">Okres: 10.2025 – obecnie (2. semestr)</p>
+                    <p>Informatyka i ekonometria<br><span style="color: var(--accent-secondary);">Specjalizacja: Big Data</span></p>
+                    
+                    <h3 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Uniwersytet Gdański | Studia I stopnia</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 5px;">Okres: 10.2022 – 07.2025</p>
+                    <p style="margin-bottom: 0;">Informatyka i ekonometria<br><span style="color: var(--accent-secondary);">Specjalizacja: Metody analizy danych</span><br>Tytuł zawodowy: Licencjat</p>
+                </div>
+
+                <div class="card reveal" id="certyfikaty">
+                    <h2>🛡️ Certyfikaty & Kompetencje miękkie</h2>
+                    <div style="background: rgba(16, 185, 129, 0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent-primary); margin-bottom: 15px;">
+                        <h3 style="color: var(--text-main); font-size: 1rem; margin-bottom: 5px;">Cybersecurity Essentials</h3>
+                        <p style="margin-bottom: 0; font-size: 0.85rem;">Cisco Networking Academy<br>(Uniwersytet Gdański, Czerwiec 2024)</p>
+                    </div>
+                    
+                    <ul class="bullet-list" style="margin-bottom: 0;">
+                        <li>Rzetelność, skrupulatność i wysoka terminowość</li>
+                        <li>Doskonała organizacja pracy własnej i szacunek do czasu wypracowane w praktyce</li>
+                        <li>Łatwość budowania relacji i pracy w zespole</li>
+                        <li>Kreatywne i logiczne podejście do rozwiązywania problemów</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card reveal" id="projekty">
+                <h2>📈 Wybrane Projekty Analityczne</h2>
+                
+                <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 20px; background: rgba(0,0,0,0.15);">
+                    <h3>Praca licencjacka: Analiza zmienności cen i wydajności wybranych upraw rolnych w województwach Polski (1999-2023)</h3>
+                    <p><strong>Cel projektu:</strong> Zbadanie zależności między cenami skupu a wydajnością wybranych upraw rolnych w Polsce w ujęciu czasowym i regionalnym.</p>
+                    <p><strong>Zakres prac:</strong> Przygotowanie własnej strony internetowej prezentującej wyniki pracy licencjackiej: analizę szeregów czasowych, porównanie województw, korelacje oraz interpretację najważniejszych zmian na rynku rolnym.</p>
+                    <div class="tags-container" style="margin-bottom: 0; margin-top: 10px;">
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">MS Excel</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Język R</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Analiza szeregów czasowych</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Dane regionalne</span>
+                    </div>
+                    <div class="project-actions">
+                        <a class="project-link" href="projekty/praca-licencjacka/index.html" target="_blank">🚀 Otwórz stronę projektu</a>
+                        <a class="project-link secondary" href="projekty/praca-licencjacka/index.html" target="_blank">🌐 Strona online</a>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 20px; background: rgba(0,0,0,0.15);">
+                    <h3>Raport: W którym województwie żyje się najlepiej?</h3>
+                    <p><strong>Cel projektu:</strong> Ocena jakości życia w województwach Polski z wykorzystaniem metod analizy wielowymiarowej i klasyfikacji obiektów.</p>
+                    <p><strong>Zakres prac:</strong> Przygotowanie raportu internetowego obejmującego analizę zmiennych diagnostycznych, korelacje, PCA, analizę kanoniczną, ranking województw oraz analizę skupień.</p>
+                    <div class="tags-container" style="margin-bottom: 0; margin-top: 10px;">
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Analiza wielowymiarowa</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">R</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Statystyka</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Wizualizacja danych</span>
+                    </div>
+                    <div class="project-actions">
+                        <a class="project-link" href="projekty/analiza-wielowymiarowa/index.html" target="_blank">🚀 Otwórz stronę projektu</a>
+                        <a class="project-link secondary" href="projekty/analiza-wielowymiarowa/DANE-ANALIZA WIELOWYMIAROWA.xlsx" target="_blank">📊 Dane XLSX</a>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 20px; background: rgba(0,0,0,0.15);">
+                    <h3>Przygotowanie i walidacja danych środowiskowych dla Trójmiasta</h3>
+                    <p><strong>Cel biznesowy:</strong> Zebranie i integracja surowych danych meteorologicznych (IMGW/METAR) oraz informacji o smogu i zanieczyszczeniach z 2025 roku do dalszego modelowania.</p>
+                    <p><strong>Wykonanie:</strong> Zmiana typów danych, wykrywanie wartości odstających oraz łączenie rozproszonych tabel. Imputacja tysięcy braków w danych (NA) z wykorzystaniem zaawansowanych algorytmów (Predictive Mean Matching) w języku R.</p>
+                    <div class="tags-container" style="margin-bottom: 0; margin-top: 10px;">
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Język R</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Data Cleaning</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Imputacja Danych</span>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.15);">
+                    <h3>Pozycjonowanie marek napojów gazowanych (Badania Rynkowe)</h3>
+                    <p><strong>Cel biznesowy:</strong> Analiza preferencji największych marek (Coca-Cola, Pepsi, Fanta) w celu optymalizacji strategii marketingowej.</p>
+                    <p><strong>Wykonanie:</strong> Projektowanie oraz przeprowadzenie badania ankietowego. Analiza zebranych danych i sformułowanie praktycznych rekomendacji biznesowych (w tym marketing ukierunkowany na spotkania towarzyskie).</p>
+                    <div class="tags-container" style="margin-bottom: 0; margin-top: 10px;">
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Badania Rynkowe</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Analiza Danych</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card reveal" id="praktyka">
+                <h2>⚙️ Praktyczne Umiejętności Analityczne</h2>
+                <ul class="bullet-list">
+                    <li><strong>Gromadzenie i Inżynieria Danych:</strong> Pozyskiwanie danych z pierwotnych i wtórnych źródeł (m.in. scraping), walidacja, czyszczenie oraz strukturyzacja.</li>
+                    <li><strong>Zarządzanie Środowiskiem Analitycznym:</strong> Projektowanie architektury raportowania, zarządzanie danymi podstawowymi (MDM) oraz administracja bezpieczeństwem użytkowników.</li>
+                    <li><strong>Analiza i Interpretacja:</strong> Wykorzystywanie technik statystycznych do interpretacji wyników, prognozowania (szeregi czasowe) oraz budowy modeli scoringowych.</li>
+                    <li><strong>Wizualizacja i Raportowanie:</strong> Generowanie wieloprzekrojowych raportów i interaktywnych dashboardów. Zapewnienie jakości i spójności danych.</li>
+                    <li><strong>Wsparcie Strategiczne IT:</strong> Ocena, testowanie i wdrażanie oprogramowania w środowiskach produkcyjnych.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="rodo reveal">
+            Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).
+        </div>
+
+    </div>
+
+    <!-- Przycisk i Okno Czatu AI -->
+    <button class="ai-chat-btn" onclick="toggleChat()">✨ Zapytaj o moje CV</button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>🤖 Interaktywny asystent CV</span>
+            <span class="chat-close" onclick="toggleChat()">✖</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">Cześć! Jestem interaktywnym asystentem CV Kamila. Możesz zapytać mnie o jego edukację, projekty, umiejętności, pochodzenie, doświadczenie z gospodarstwa albo kontakt.</div>
+        </div>
+        <div class="loading" id="chatLoading">Asystent pisze...</div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Zadaj pytanie..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Wyślij</button>
+        </div>
+    </div>
+
+    <!-- Skrypty AI oraz Animacji -->
+    <script>
+        // Animacje Scroll Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+
+        // Funkcje Czatbota - Wersja rozszerzona (bezpieczna dla GitHub Pages)
+        const kamilProfile = {
+            name: "Kamil Sowiński",
+            age: "23 lata",
+            birthDate: "13 marca 2003 r.",
+            origin: "Sierpc",
+            currentCity: "Gdańsk",
+            field: "Informatyka i Ekonometria, specjalizacja Big Data",
+            goal: "rozwój w analizie danych, automatyzacji raportowania i praktycznym wykorzystaniu AI",
+            email: "kamilsowinski13@gmail.com",
+            phone: "+48 515 767 403"
+        };
+
+        function toggleChat() {
+            const chat = document.getElementById('chatWindow');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function handleKeyPress(e) {
+            if(e.key === 'Enter') sendMessage();
+        }
+
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/ł/g, "l");
+        }
+
+        function hasAny(message, keywords) {
+            return keywords.some(keyword => message.includes(keyword));
+        }
+
+        function getBotReply(rawMessage) {
+            const message = normalizeText(rawMessage);
+
+            if (hasAny(message, ["czesc", "hej", "witaj", "dzien dobry", "siema"])) {
+                return "Cześć! Możesz zapytać mnie np. o to, skąd pochodzi Kamil, ile ma lat, co studiuje, jakie zna narzędzia, jakie ma projekty albo dlaczego pasuje do pracy analitycznej.";
+            }
+
+            if (hasAny(message, ["ile ma lat", "wiek", "lat", "urodz", "data urodzenia", "kiedy sie urodzil"])) {
+                return "Kamil ma 23 lata. Urodził się 13 marca 2003 r.";
+            }
+
+            if (hasAny(message, ["skad", "pochodzi", "sierpc", "gdzie sie wychowal", "miasto rodzinne"])) {
+                return "Kamil pochodzi z Sierpca, a obecnie jest związany z Gdańskiem, gdzie studiuje na Uniwersytecie Gdańskim i rozwija się w kierunku analizy danych.";
+            }
+
+            if (hasAny(message, ["gospodar", "roln", "mlodsz", "dziecinst", "pomagal", "rodzinnym", "praktyczne doswiadczenie"])) {
+                return "Od młodszych lat Kamil pomagał przy pracy w rodzinnym gospodarstwie rolnym. To nauczyło go systematyczności, odpowiedzialności, dobrej organizacji czasu i praktycznego podejścia do pracy. Ten kontekst dobrze łączy się też z jego projektami dotyczącymi rolnictwa i danych regionalnych.";
+            }
+
+            if (hasAny(message, ["o nim", "kim jest", "opowiedz", "profil", "krotko", "charakter", "cechy"])) {
+                return "Kamil to 23-letni student Informatyki i Ekonometrii ze specjalizacją Big Data. Pochodzi z Sierpca, obecnie rozwija się w Gdańsku. Jest osobą skrupulatną, ambitną i dobrze zorganizowaną, a w analizie danych stawia na praktyczne wnioski, automatyzację i wykorzystanie nowoczesnych narzędzi.";
+            }
+
+            if (hasAny(message, ["doswiadczenie", "praca", "stanowisk", "praktyka", "staz"])) {
+                return "Kamil szuka możliwości rozwoju w obszarze analizy danych. Ma doświadczenie projektowe w pozyskiwaniu, czyszczeniu, walidacji i analizie danych. Dodatkowo wieloletnia pomoc w rodzinnym gospodarstwie nauczyła go odpowiedzialności, pracy pod presją czasu i dobrej organizacji obowiązków.";
+            }
+
+            if (hasAny(message, ["wyksztalcenie", "studia", "uczeln", "szkola", "uniwersytet", "big data", "ekonometria"])) {
+                return "Kamil studiuje Informatykę i Ekonometrię na Uniwersytecie Gdańskim, na studiach II stopnia ze specjalizacją Big Data. Wcześniej ukończył studia licencjackie na tym samym kierunku, ze specjalizacją Metody analizy danych.";
+            }
+
+            if (hasAny(message, ["umiejetnosci", "technologie", "narzedzia", "program", "python", "sql", "r", "power bi", "excel", "tableau"])) {
+                return "Najważniejsze narzędzia Kamila to R, Python, SQL, Excel, Power BI, Tableau i Statistica. Interesuje się też automatyzacją raportowania, web scrapingiem, czyszczeniem danych oraz praktycznym wykorzystaniem AI i LLM w pracy analitycznej.";
+            }
+
+            if (hasAny(message, ["projekt", "portfolio", "praca licencjacka", "licencjat", "analiza wielowymiarowa", "wojewodztw", "upraw", "rolnych", "srodowiskowych", "trojmiasta"])) {
+                return "W portfolio Kamila znajdują się m.in. strona z pracą licencjacką o analizie zmienności cen i wydajności upraw rolnych w Polsce, projekt z analizy wielowymiarowej jakości życia w województwach oraz projekt przygotowania i walidacji danych środowiskowych dla Trójmiasta.";
+            }
+
+            if (hasAny(message, ["ai", "sztuczn", "inteligenc", "llm", "model", "automatyzacja", "copilot"])) {
+                return "Kamil interesuje się praktycznym wykorzystaniem AI w analizie danych. Nie traktuje AI jako celu samego w sobie, tylko jako narzędzie do szybszego porządkowania informacji, automatyzacji raportów i wyciągania trafniejszych wniosków biznesowych.";
+            }
+
+            if (hasAny(message, ["zainteresowania", "hobby", "czas wolny", "sport", "podroze", "gotowanie", "muzyka"])) {
+                return "Poza analizą danych Kamil interesuje się sportem, podróżami, gotowaniem i muzyką. Ważnym obszarem jego zainteresowań są też rolnictwo, rynki surowcowe, energetyka i nowe technologie.";
+            }
+
+            if (hasAny(message, ["kontakt", "email", "mail", "telefon", "linkedin", "cv", "pdf", "pobierz"])) {
+                return "Z Kamilem można skontaktować się mailowo: kamilsowinski13@gmail.com lub telefonicznie: +48 515 767 403. Na stronie znajduje się też przycisk do pobrania CV w PDF oraz link do profilu LinkedIn.";
+            }
+
+            if (hasAny(message, ["dlaczego", "czemu", "pasuje", "warto", "kandydat", "rekrutacja", "orlen", "energa", "analityk"])) {
+                return "Kamil może dobrze odnaleźć się w pracy analitycznej, bo łączy podstawy statystyki i ekonometrii z praktyczną pracą na danych. Jest skrupulatny, dobrze zorganizowany i nastawiony na automatyzację powtarzalnych zadań, co jest przydatne w raportowaniu, analizie biznesowej i pracy z dużymi zbiorami danych.";
+            }
+
+            return "Nie mam gotowej odpowiedzi na to pytanie, ale mogę opowiedzieć o Kamilu: ma 23 lata, pochodzi z Sierpca, studiuje Big Data w Gdańsku, zna R, Python, SQL, Excel i Power BI, a w portfolio ma projekty analityczne z rolnictwa, analizy wielowymiarowej i danych środowiskowych.";
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('userInput');
+            const message = inputField.value.trim();
+            if(!message) return;
+
+            addMessage(inputField.value, 'user');
+            inputField.value = '';
+            document.getElementById('chatLoading').style.display = 'block';
+
+            setTimeout(() => {
+                const botReply = getBotReply(message);
+                document.getElementById('chatLoading').style.display = 'none';
+                addMessage(botReply, 'bot');
+            }, 600);
+        }
+
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `msg ${sender}`;
+            msgDiv.textContent = text;
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
