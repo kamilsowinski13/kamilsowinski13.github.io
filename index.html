@@ -652,6 +652,25 @@
                     </div>
                 </div>
 
+
+                <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 20px; background: rgba(0,0,0,0.15);">
+                    <h3>Global Superstore: analiza sprzedaży, rentowności i ryzyka rabatowego</h3>
+                    <p><strong>Cel projektu:</strong> Przygotowanie interaktywnych dashboardów wspierających analizę sprzedaży, zysku, klientów, produktów, logistyki, sezonowości oraz wpływu rabatów na rentowność.</p>
+                    <p><strong>Zakres prac:</strong> Opracowanie porównywalnych raportów w Tableau i Microsoft Power BI na wspólnym zbiorze danych Global Superstore; przygotowanie 6 dashboardów Tableau, raportu Power BI oraz porównanie możliwości obu platform BI.</p>
+                    <div class="tags-container" style="margin-bottom: 0; margin-top: 10px;">
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Power BI</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Tableau</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Dashboardy</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Analiza sprzedaży</span>
+                        <span class="tag" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);">Business Intelligence</span>
+                    </div>
+                    <div class="project-actions">
+                        <a class="project-link" href="https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/" target="_blank" rel="noopener noreferrer">🚀 Otwórz projekt Global Superstore</a>
+                        <a class="project-link secondary" href="https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/" target="_self">🌐 Otwórz w tej karcie</a>
+                        <p style="width:100%; margin:6px 0 0; font-size:0.78rem; color:var(--text-muted);">Link: <a href="https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-secondary);">https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/</a></p>
+                    </div>
+                </div>
+
                 <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.15);">
                     <h3>Pozycjonowanie marek napojów gazowanych (Badania Rynkowe)</h3>
                     <p><strong>Cel biznesowy:</strong> Analiza preferencji największych marek (Coca-Cola, Pepsi, Fanta) w celu optymalizacji strategii marketingowej.</p>
@@ -691,7 +710,7 @@
             <span class="chat-close" onclick="toggleChat()">✖</span>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">Cześć! Jestem interaktywnym asystentem CV Kamila. Możesz zapytać mnie o jego edukację, projekty, umiejętności, pochodzenie, doświadczenie z gospodarstwa, projekt Outliers albo kontakt.</div>
+            <div class="msg bot">Cześć! Jestem interaktywnym asystentem CV Kamila. Możesz zapytać mnie o jego edukację, projekty, umiejętności, pochodzenie, doświadczenie z gospodarstwa, projekt Outliers, Global Superstore albo kontakt.</div>
         </div>
         <div class="loading" id="chatLoading">Asystent pisze...</div>
         <div class="chat-input-area">
@@ -782,12 +801,16 @@
                 return "Kamil studiuje Informatykę i Ekonometrię na Uniwersytecie Gdańskim, na studiach II stopnia ze specjalizacją Big Data. Wcześniej ukończył studia licencjackie na tym samym kierunku, ze specjalizacją Metody analizy danych.";
             }
 
+            if (hasAny(message, ["global superstore", "platformy wizualizacji", "dashboard", "dashbord", "rabaty", "rentownosc", "analiza sprzedazy", "tableau projekt", "power bi projekt"])) {
+                return "Kamil współtworzył projekt Global Superstore z zakresu platform wizualizacji danych. Projekt obejmował analizę sprzedaży, rentowności i ryzyka rabatowego oraz budowę porównywalnych dashboardów w Tableau i Microsoft Power BI. W Tableau przygotowano 6 interaktywnych dashboardów, a całość pozwoliła porównać możliwości obu narzędzi BI. Link do projektu: https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/";
+            }
+
             if (hasAny(message, ["umiejetnosci", "technologie", "narzedzia", "program", "python", "sql", "r", "power bi", "excel", "tableau"])) {
                 return "Najważniejsze narzędzia Kamila to R, Python, SQL, Excel, Power BI, Tableau i Statistica. Interesuje się też automatyzacją raportowania, web scrapingiem, czyszczeniem danych oraz praktycznym wykorzystaniem AI i LLM w pracy analitycznej.";
             }
 
             if (hasAny(message, ["projekt", "portfolio", "praca licencjacka", "licencjat", "analiza wielowymiarowa", "wojewodztw", "upraw", "rolnych", "srodowiskowych", "trojmiasta", "outliers", "smog", "gios", "imgw", "metar", "zanieczyszczen", "pogoda"])) {
-                return "W portfolio Kamila znajdują się m.in. praca licencjacka o analizie cen i wydajności upraw, analiza wielowymiarowa jakości życia w województwach oraz projekt Outliers dotyczący przygotowania i walidacji danych środowiskowych dla Trójmiasta. Link do pracy licencjackiej: https://kamilsowinski13.github.io/praca-licencjacka/ Link do analizy wielowymiarowej: https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/ Link do projektu Outliers: https://kamilsowinski13.github.io/outliers-projekt/";
+                return "W portfolio Kamila znajdują się: praca licencjacka o analizie cen i wydajności upraw, analiza wielowymiarowa jakości życia w województwach, projekt Outliers o danych środowiskowych dla Trójmiasta oraz projekt Global Superstore porównujący Tableau i Power BI w analizie sprzedaży, rentowności i rabatów. Linki: praca licencjacka - https://kamilsowinski13.github.io/praca-licencjacka/ | analiza wielowymiarowa - https://kamilsowinski13.github.io/Analiza-Wielowymiarowa/ | Outliers - https://kamilsowinski13.github.io/outliers-projekt/ | Global Superstore - https://kamilsowinski13.github.io/Platformy-wizualizacji-danych/";
             }
 
             if (hasAny(message, ["ai", "sztuczn", "inteligenc", "llm", "model", "automatyzacja", "copilot"])) {
@@ -806,7 +829,7 @@
                 return "Kamil może dobrze odnaleźć się w pracy analitycznej, bo łączy podstawy statystyki i ekonometrii z praktyczną pracą na danych. Jest skrupulatny, dobrze zorganizowany i nastawiony na automatyzację powtarzalnych zadań, co jest przydatne w raportowaniu, analizie biznesowej i pracy z dużymi zbiorami danych.";
             }
 
-            return "Nie mam gotowej odpowiedzi na to pytanie, ale mogę opowiedzieć o Kamilu: ma 23 lata, pochodzi z Sierpca, studiuje Big Data w Gdańsku, zna R, Python, SQL, Excel i Power BI, a w portfolio ma projekty analityczne z rolnictwa, analizy wielowymiarowej oraz projekt Outliers o danych środowiskowych.";
+            return "Nie mam gotowej odpowiedzi na to pytanie, ale mogę opowiedzieć o Kamilu: ma 23 lata, pochodzi z Sierpca, studiuje Big Data w Gdańsku, zna R, Python, SQL, Excel, Power BI i Tableau, a w portfolio ma projekty z rolnictwa, analizy wielowymiarowej, danych środowiskowych oraz dashboardów Global Superstore.";
         }
 
         function sendMessage() {
